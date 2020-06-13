@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-const KEY = 'AIzaSyBuFRtVeD6FSZV2jZsVWVmNwENtEB9CFxI';
+const KEY = 'AIzaSyDcRQwIVCImlWsShknwbXUDAUGKXmkNDqI';
 
 const youtube = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',
 });
+
+console.log(KEY);
 
 export const fetchPopularData = async () => {
   return await youtube.get('/videos', {
