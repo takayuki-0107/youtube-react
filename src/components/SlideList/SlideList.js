@@ -1,24 +1,11 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Style from './SlideList.module.scss';
-import { fetchRelatedData } from '../../api/index';
 import { Store } from '../../store/index';
 import SlideListItem from '../SlideListItem/SlideListItem';
 
 const SlideList = () => {
-  const { globalState, setGlobalState } = useContext(Store);
-  const setRelatedVideo = async (id) => {
-    await fetchRelatedData(id).then((res) => {
-      console.log(res);
-      setGlobalState({
-        type: 'SET_RELATED',
-        payload: { related: res.data.items },
-      });
-    });
-  };
-  useEffect(() => {
-    setRelatedVideo(globalState.selected.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalState.selected]);
+  const { globalState } = useContext(Store);
+
   return (
     <div className={Style.sidenav}>
       {globalState.related ? (
