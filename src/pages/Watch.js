@@ -8,7 +8,7 @@ import SlideList from '../components/SideList/SideList';
 import { fetchSelectedData, fetchRelatedData } from '../api/index';
 
 const Watch = () => {
-  const { globalState, setGlobalState } = useContext(Store);
+  const { setGlobalState } = useContext(Store);
   //現在のurlやparamsを取得できる
   const location = useLocation();
 
