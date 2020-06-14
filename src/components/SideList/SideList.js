@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Style from './SlideList.module.scss';
+import Style from './SideList.module.scss';
 import { Store } from '../../store/index';
-import SlideListItem from '../SlideListItem/SlideListItem';
+import SlideListItem from '../SideListItem/SideListItem';
 
 const SlideList = () => {
   const { globalState } = useContext(Store);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './SlideListItem.module.scss';
+import Style from './SideListItem.module.scss';
 import { Link } from 'react-router-dom';
 
 const SlideListItem = ({ src, title, id }) => {

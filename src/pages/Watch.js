@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Store } from '../store/index';
 import Layout from '../components/Layout/Layout';
 import VideoDetail from '../components/VideoDetail/VideoDetail';
-import SlideList from '../components/SlideList/SlideList';
+import SlideList from '../components/SideList/SideList';
 import { fetchSelectedData, fetchRelatedData } from '../api/index';
 
 const Watch = () => {
