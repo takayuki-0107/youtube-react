@@ -1,8 +1,11 @@
 import React, { useEffect, useContext } from 'react';
-// import Style from './VideoDetail.module.scss';
+import Linkify from 'react-linkify';
+
+import Style from './VideoDetail.module.scss';
 import { useLocation } from 'react-router-dom';
-import { fetchSelectedData } from '../../api';
-import { Store } from '../../store';
+import { fetchSelectedData } from '../../api/index';
+import { Store } from '../../store/index';
+import VideoPlay from '../VideoPlay/VideoPlay';
 
 const VideoDetail = () => {
   //現在のurlやparamsを取得できる
@@ -15,7 +18,8 @@ const VideoDetail = () => {
     //idはv=という形で格納されている
     const id = searchParams.get('v');
     await fetchSelectedData(id).then((res) => {
-      const item = res.data.items.slice(0);
+      const item = res.data.items.shift();
+      console.log(item);
       setGlobalState({
         type: 'SET_SELECTED',
         payload: { selected: item },
@@ -28,7 +32,18 @@ const VideoDetail = () => {
     setSelectedVideo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <div></div>;
+  return globalState.selected && globalState.selected.id ? (
+    <div className={Style.wrap}>
+      <VideoPlay id={globalState.selected.id} />
+      <p>{globalState.selected.snippet.title}</p>
+      <hr />
+      <Linkify>
+        <pre>{globalState.selected.snippet.description}</pre>
+      </Linkify>
+    </div>
+  ) : (
+    <span>no data</span>
+  );
 };
 
 export default VideoDetail;
